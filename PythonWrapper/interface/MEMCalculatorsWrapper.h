@@ -36,6 +36,13 @@ class MEMCalculatorsWrapper
               const math::XYZTLorentzVector & Z2_lept2, int Z2_lept2Id,
               const std::vector<math::XYZTLorentzVector> & jetP4s) ;
 
+  std::vector<std::pair<std::string,float> > computeNew(
+              const TLorentzVector Z1_lept1, int Z1_lept1Id,
+              const TLorentzVector Z1_lept2, int Z1_lept2Id,
+              const TLorentzVector Z2_lept1, int Z2_lept1Id,
+              const TLorentzVector Z2_lept2, int Z2_lept2Id,
+              const std::vector<TLorentzVector> jetP4s) ;
+
 
   float getKD() ;
   float getSuperKD() ;

@@ -65,6 +65,23 @@ MEMCalculatorsWrapper::computeAll(TLorentzVector Z1_lept1, int Z1_lept1Id,
 
 std::vector<std::pair<std::string,float>>  
 MEMCalculatorsWrapper::computeNew(
+        TLorentzVector Z1_lept1, int Z1_lept1Id,
+        TLorentzVector Z1_lept2, int Z1_lept2Id,
+        TLorentzVector Z2_lept1, int Z2_lept1Id,
+        TLorentzVector Z2_lept2, int Z2_lept2Id,
+        const std::vector<TLorentzVector> jets)
+{
+  std::vector<math::XYZTLorentzVector> xyztlvs;
+  for (const auto &p4 : jets) { xyztlvs.push_back(math::XYZTLorentzVector(p4.Px(),p4.Py(),p4.Pz(),p4.E())); }
+  return computeNew(math::XYZTLorentzVector(Z1_lept1.Px(),Z1_lept1.Py(),Z1_lept1.Pz(),Z1_lept1.E()), Z1_lept1Id,
+                    math::XYZTLorentzVector(Z1_lept2.Px(),Z1_lept2.Py(),Z1_lept2.Pz(),Z1_lept2.E()), Z1_lept2Id,
+                    math::XYZTLorentzVector(Z2_lept1.Px(),Z2_lept1.Py(),Z2_lept1.Pz(),Z2_lept1.E()), Z2_lept1Id,
+                    math::XYZTLorentzVector(Z2_lept2.Px(),Z2_lept2.Py(),Z2_lept2.Pz(),Z2_lept2.E()), Z2_lept2Id,
+                    xyztlvs);
+}
+
+std::vector<std::pair<std::string,float>>  
+MEMCalculatorsWrapper::computeNew(
         const math::XYZTLorentzVector & Z1_lept1, int Z1_lept1Id,
         const math::XYZTLorentzVector & Z1_lept2, int Z1_lept2Id,
         const math::XYZTLorentzVector & Z2_lept1, int Z2_lept1Id,
